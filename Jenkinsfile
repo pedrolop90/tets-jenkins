@@ -2,11 +2,11 @@ pipeline {
   agent any
 
   options {
-    timeout(time: 10, unit: 'MINUTES')
+    timeout(time: 50, unit: 'MINUTES')
   }
 
   environment {
-    ARTIFACT_ID = "pedrolop90/usuario-test:30.0"
+    ARTIFACT_ID = "pedrolop90/usuario-test:31.0"
   }
 
   stages {
