@@ -18,9 +18,6 @@ pipeline {
       }
     }
     stage('Publish') {
-      when {
-        branch 'develop'
-      }
       steps {
         script {
           docker.withRegistry("", "DockerHubCredentials") {
