@@ -6,7 +6,7 @@ pipeline {
   }
 
   environment {
-    ARTIFACT_ID = "pedrolop90/usuario-test:${env.BUILD_NUMBER}"
+    ARTIFACT_ID = "pedrolop90/usuario-test:30.0"
   }
 
   stages {
