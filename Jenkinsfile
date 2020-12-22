@@ -28,7 +28,7 @@ pipeline {
     }
     stage('Deployment') {
       steps {
-        build job: 'test_ssh', parameters: [string(name: 'ARTIFACT_ID', value: "${env.ARTIFACT_ID}")], wait: false
+        build job: 'test_ssh_2.0', parameters: [string(name: 'ARTIFACT_ID', value: "${env.ARTIFACT_ID}")], wait: false
       }
     }
   }
