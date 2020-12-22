@@ -2,11 +2,11 @@ pipeline {
   agent any
 
   options {
-    timeout(time: 10, unit: 'MINUTES')
+    timeout(time: 5, unit: 'MINUTES')
   }
 
   environment {
-    ARTIFACT_ID = "pedrolop90/usuario-test:31.0"
+    ARTIFACT_ID = "pedrolop90/usuario-test:${env.BUILD_NUMBER}"
   }
 
   stages {
@@ -18,6 +18,9 @@ pipeline {
       }
     }
     stage('Publish') {
+      when {
+        branch 'master'
+      }
       steps {
         script {
           docker.withRegistry("", "DockerHubCredentials") {
