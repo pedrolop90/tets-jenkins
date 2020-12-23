@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   options {
-    timeout(time: 10, unit: 'MINUTES')
+    timeout(time: 5, unit: 'MINUTES')
   }
 
   environment {
@@ -18,15 +18,17 @@ pipeline {
       }
     }
     stage('Publish') {
-      when {
-        branch 'develop'
-      }
       steps {
         script {
           docker.withRegistry("", "DockerHubCredentials") {
             dockerImage.push()
           }
         }
+      }
+    }
+    stage('Deployment') {
+      steps {
+        build job: 'test_ssh_2.0', parameters: [string(name: 'ARTIFACT_ID', value: "${env.ARTIFACT_ID}")], wait: false
       }
     }
   }
