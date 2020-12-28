@@ -1,0 +1,16 @@
+-------------------------------------------
+#Service
+------------------------------------------
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: usuario-service
+spec:
+  type: NodePort
+  selector:
+    app: usuario
+  ports:
+    - protocol: TCP
+      port: 7000
+      targetPort: 7000

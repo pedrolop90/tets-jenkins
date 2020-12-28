@@ -1,0 +1,26 @@
+-------------------------------------------
+#Deployment
+-------------------------------------------
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usuario-deployment
+  labels:
+    app: usuario
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usuario
+  template:
+    metadata:
+      labels:
+        app: usuario
+    spec:
+      containers:
+        - name: usuario
+          image: pedrolop90/usuario-test:29
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 7000
